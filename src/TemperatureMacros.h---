@@ -1,0 +1,57 @@
+#ifndef _DS_SAFEANDFASTREAD_MACROS_
+#define _DS_SAFEANDFASTREAD_MACROS_
+
+
+#define ADC2C(adc) (((adc) + 8) / 16)
+/*
+int16_t result = ds18b20SafeAndFastRead(pin);
+if (result == DS18X_INVALID_READ) return result;
+//result = 0xFE6F; // test negative temperatures 0xFE6F => -25.0625 Celsius
+return (result + 8) / 16;
+// notes:
+// > the operation is equivalent to result = result / 16 + 0.5
+// > a division / instead of shift right >> is performed (when the divisor is a power of 2)
+//   because we need the sign to be maintained.
+// > 8 / 16 = 0.5 is for round-up.
+*/
+
+#define ADC2C10(adc) (((int32_t)(adc) * 100 + 8) / 160)
+/*
+int16_t result = ds18b20SafeAndFastRead(pin);
+if (result == DS18X_INVALID_READ) return result;
+//result = 0xFE6F; // test negative temperatures 0xFE6F => -25.0625 Celsius
+return ((int32_t)result * 100 + 8) / 160;
+// notes:
+// > the operation is equivalent to result = (result / 16 + 0.05) * 10
+// > a division / instead of shift right >> is performed (when the divisor is a power of 2)
+//   because we need the sign to be maintained.
+// > +8 / 160 = 0.05 is for round-up.
+*/
+
+#define ADC2F(adc) (((int32_t)(adc) * 18 + 5200) / 160)
+/*
+int16_t result = ds18b20SafeAndFastRead(pin);
+if (result == DS18X_INVALID_READ) return result;
+//result = 0xFE6F; // test negative temperatures 0xFE6F => -25.0625 Celsius
+return ((int32_t)result * 288 + 5200) / 160;
+// notes:
+// > the operation is equivalent to result = result * 1.8 + 32.5
+//   32.5 instead of 32 is for the round-up.
+// > a division / instead of shift right >> is performed (when the divisor is a power of 2)
+//   because we need the sign to be maintained.
+// > 80 / 160 = 0.5 is for round-up.
+*/
+
+#define ADC2F10(adc) (((int32_t)(adc) * 18 + 5128) / 16)
+/*
+int16_t result = ds18b20SafeAndFastRead(pin);
+if (result == DS18X_INVALID_READ) return result;
+//result = 0xFE6F; // test negative temperatures 0xFE6F => -25.0625 C
+return ((int32_t)result * 288 + 5128) / 16;
+// notes:
+// > the operation is equivalent to result = (result * 1.8 + 32.05) * 10
+// > a division / instead of shift right >> is performed (when the divisor is a power of 2)
+//   because we need the sign to be maintained.
+*/
+
+#endif //_DS_SAFEANDFASTREAD_MACROS_

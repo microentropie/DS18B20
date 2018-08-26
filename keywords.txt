@@ -1,0 +1,23 @@
+#######################################
+# Data types (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+ds18b20_init KEYWORD2
+_ds18b20SafeAndFastRead KEYWORD2
+ds18b20_Read_C  KEYWORD2
+ds18b20_Read_C10  KEYWORD2
+ds18b20_Read_F  KEYWORD2
+ds18b20_Read_F10  KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+DS18X_OK  LITERAL1
+DS18X_ERR_NO_MORE_ADDR  LITERAL1
+DS18X_ERR_CRC_ERROR LITERAL1
+DS18X_ERR_NOT_THE_EXPECTED_DEVICE LITERAL1
+DS18X_ERR_INVALID_RESOLUTION  LITERAL1
+DS18X_INVALID_READ  LITERAL1
