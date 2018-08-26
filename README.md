@@ -28,9 +28,9 @@ Just after having read it, the chip receives the order to start a new conversion
 (i.e. read again the temperature). So the function returns temperature,
 Arduino runs the sketch while the chip is working in the background.
 Temperature is read as integer so no time and memory 'waste' for floating-point
-conversions.
+conversions. If you prefer getting it as a floating-point number there's a function for that too.
 
-The code is derived from Peter Scargill blog (https://www.scargill.net/reading-dallas-ds18b20-chips-quickly/)
+The code is derived from Peter Scargill blog (https://www.scargill.net/reading-dallas-ds18b20-chips-quickly/).
 He shows a function where he reads temperature in just 5 milliseconds:
 he skips integrity (CRC) checks !<cr>
 This library performs CRC check while reading so invalid values can be discarded.
