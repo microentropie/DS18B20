@@ -8,7 +8,7 @@ DS18B20
 Arduino library.<br>
 Read temperature from DS18B20 in 10 milliseconds<br>
 (the standard library requires 800 milliseconds).<br>
-Please note that it will only work under the following conditions:
+Please note that it will work only if ALL of the following conditions are satisfied:
 * the chip is exactly DS18B20 (no DB1820 or other variants)
 * the chip has the standard connection:
   pin 3 (Vcc) connected to Vcc
@@ -16,10 +16,10 @@ Please note that it will only work under the following conditions:
   pin 1 (GND) connected to GND
 * A 4.7 K resistor is connected between pin 3 and pin 2
 * Only one chip connected, if you need more use more Arduino pins
-* the function that reads temperature is NEVER called more frequently than 1000 ms:
+* The program that reads temperature is NEVER called more frequently than 1000 ms:
   at least one second must elapse between 2 calls.
   This time is not checked inside the function, you must take care by yourself.
-    
+
 The trick for this big time save is that while the chip is doing its work
 (adc conversion), Arduino is free to do other tasks.
 So at the moment the function is called, the temperature is ready to be collected
